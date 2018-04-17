@@ -13,6 +13,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import static com.xrom.server.response.WebResponse.error;
 
 /**
+ * configuration global exception handler
  * @author XRom
  * @date 2018-02-07 19-41
  */

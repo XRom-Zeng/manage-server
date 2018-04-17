@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * interceptor configuration
  * @author XRom
  * @date 2018-02-26 10-55
- * interceptor configuration
  */
 @Configuration
 public class InterceptorConfiguration {
