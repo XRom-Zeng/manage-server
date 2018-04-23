@@ -36,7 +36,7 @@ public class ShiroRealm  extends AuthorizingRealm{
         if (Objects.isNull(user)) {
             throw new UnknownAccountException("User don't exist");
         }
-        ByteSource credentialsSalt = ByteSource.Util.bytes(username);   //盐值
+        ByteSource credentialsSalt = ByteSource.Util.bytes(user.getPhone());   //盐值
         return new SimpleAuthenticationInfo(user, user.getPassword(), credentialsSalt, this.getName());
     }
 }

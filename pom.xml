@@ -33,7 +33,7 @@
             <properties>
                 <environment>production</environment>
                 <host>www.zxr1998.com.cn</host>
-                <mysql.url>jdbc:mysql://${host}/spring_boot?characterEncoding=UTF-8&amp;useSSL=false</mysql.url>
+                <mysql.url>jdbc:mysql://${host}/manage_server?characterEncoding=UTF-8&amp;useSSL=false</mysql.url>
                 <mysql.username>XRom</mysql.username>
                 <mysql.password>XRom45</mysql.password>
                 <redis.host>${host}</redis.host>
