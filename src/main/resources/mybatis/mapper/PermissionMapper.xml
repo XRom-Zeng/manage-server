@@ -8,11 +8,11 @@
     <result column="resource_type" property="resourceType" jdbcType="INTEGER" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="permission" property="permission" jdbcType="VARCHAR" />
-    <result column="parentId" property="parentId" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
     <result column="available" property="available" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, created_time, name, resource_type, url, permission, parentId, available
+    id, created_time, name, resource_type, url, permission, parent_id, available
   </sql>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
@@ -44,7 +44,7 @@
         permission,
       </if>
       <if test="parentId != null" >
-        parentId,
+        parent_id,
       </if>
       <if test="available != null" >
         available,
@@ -93,7 +93,7 @@
         permission = #{permission,jdbcType=VARCHAR},
       </if>
       <if test="parentId != null" >
-        parentId = #{parentId,jdbcType=BIGINT},
+        parent_id = #{parentId,jdbcType=BIGINT},
       </if>
       <if test="available != null" >
         available = #{available,jdbcType=INTEGER},
@@ -101,4 +101,15 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByRoleId" resultMap="BaseResultMap" >
+    select
+      <include refid="Base_Column_List" />
+    from t_permission
+    where id in (
+      select permission_id
+      from t_role_permission
+      where role_id = #{roleId}
+    )
+  </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.xrom.server.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 实体：用户信息
@@ -35,4 +36,7 @@ public class User {
 
     /** 状态：0-冻结； 1-正常*/
     private Integer state;
+
+    /** 用户角色 */
+    private Set<Role> roles;
 }

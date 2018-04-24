@@ -10,6 +10,7 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="INTEGER" />
+    <collection property="roles" column="id" select="com.xrom.server.mapper.RoleMapper.selectByUserId" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, created_time, last_login_time, username, phone, password, sex, state

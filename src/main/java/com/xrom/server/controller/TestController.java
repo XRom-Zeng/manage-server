@@ -8,11 +8,11 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 这是一个用于测试的controller
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date: 2018-04-16 15:52:01
  */
 @Api(tags = "测试接口", description = "测试框架搭建环境基础接口访问")
-@Controller
+@RestController
 @RequestMapping(value = "/test")
 public class TestController {
 

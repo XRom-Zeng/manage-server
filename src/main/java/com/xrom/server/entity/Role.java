@@ -3,6 +3,7 @@ package com.xrom.server.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 实体：角色
@@ -26,4 +27,7 @@ public class Role {
 
     /** 是否可用： 0-不可用； 1-可用 */
     private Integer available;
+
+    /** 角色权限 */
+    private Set<Permission> permissions;
 }

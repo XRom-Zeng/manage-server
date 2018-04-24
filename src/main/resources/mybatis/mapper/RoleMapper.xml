@@ -7,6 +7,7 @@
     <result column="role" property="role" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="available" property="available" jdbcType="INTEGER" />
+    <collection property="permissions" column="id" select="com.xrom.server.mapper.PermissionMapper.selectByRoleId" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, created_time, role, description, available
@@ -70,4 +71,17 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 根据用户id查询用户拥有的角色 -->
+  <select id="selectByUserId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_role
+    where id in (
+      select
+        role_id
+      from t_user_role
+      where user_id = #{userId}
+    )
+  </select>
 </mapper>

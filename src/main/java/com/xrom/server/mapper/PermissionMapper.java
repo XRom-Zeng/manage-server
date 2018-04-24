@@ -1,6 +1,9 @@
 package com.xrom.server.mapper;
 
 import com.xrom.server.entity.Permission;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 资源权限mapper操作
@@ -14,5 +17,7 @@ public interface PermissionMapper {
     Permission selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Permission record);
+
+    List<Permission> selectByRoleId(@Param("roleId") Long roleId);
 
 }

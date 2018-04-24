@@ -11,6 +11,7 @@ import static com.xrom.server.code.ResponseCode.SUCCESSFUL;
 import static com.xrom.server.code.ResponseCode.UNDEFINED;
 
 /**
+ * 封装返回的json数据
  * @author XRom
  * @date 2018-02-09 10-23
  */
