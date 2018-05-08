@@ -9,6 +9,9 @@
 
     <context id="MysqlTables" targetRuntime="MyBatis3">
 
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
         <!--关闭自动生成注释-->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>

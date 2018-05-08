@@ -1,5 +1,5 @@
 server:
-    port: 813
+    port: 812
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
@@ -19,6 +19,9 @@ spring:
         throw-exception-if-no-handler-found: true
     resources:
         add-mappings: false
+    thymeleaf:
+        mode: LEGACYHTML5
+        cache: false
 mybatis:
   type-aliases-package: com.xrom.server.entity
   mapper-locations: classpath:mybatis/mapper/*.xml

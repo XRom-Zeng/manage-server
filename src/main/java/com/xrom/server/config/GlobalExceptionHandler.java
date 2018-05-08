@@ -2,6 +2,8 @@ package com.xrom.server.config;
 
 import com.xrom.server.code.ResponseCode;
 import com.xrom.server.response.WebResponse;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,9 +24,21 @@ public class GlobalExceptionHandler {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ExceptionHandler(UnknownAccountException.class)
+    public WebResponse unknownAccountException(UnknownAccountException e) {
+        logger.error(e.getMessage());
+        return error(ResponseCode.UNKNOWN_ACCOUNT);
+    }
+
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    public WebResponse incorrectCredentialsException(IncorrectCredentialsException e) {
+        logger.error(e.getMessage());
+        return error(ResponseCode.INCORRECT_CREDENTIALS);
+    }
+
     @ExceptionHandler(Exception.class)
     public WebResponse exceptionHandler(Exception e) {
-        e.printStackTrace();
+        logger.error(e.getMessage());
         return error();
     }
 

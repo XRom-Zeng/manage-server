@@ -32,7 +32,7 @@ public class ShiroRealm  extends AuthorizingRealm{
         Set<String> roles = new HashSet<>();
         Set<String> permissions = new HashSet<>();
 
-        user.getRoles().forEach(a -> roles.add(a.getRole()));
+        user.getRoles().forEach(r -> roles.add(r.getRole()));
         for (Role role : user.getRoles()) {
             role.getPermissions().forEach(p -> permissions.add(p.getPermission()));
         }

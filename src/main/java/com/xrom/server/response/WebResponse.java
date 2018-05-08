@@ -41,6 +41,10 @@ public class WebResponse implements Serializable {
         return of(UNDEFINED.codeOf(), null, UNDEFINED.msgOf());
     }
 
+    public static WebResponse error(String msg) {
+        return of(500, null, msg);
+    }
+
     public static WebResponse error(ResponseCode code) {
         return of(code.codeOf(), null, code.msgOf());
     }
