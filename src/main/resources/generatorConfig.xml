@@ -55,7 +55,7 @@
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
 
-        <table schema="manage-server" tableName="t_role" domainObjectName="Role"
+        <table schema="manage-server" tableName="t_s_role" domainObjectName="Role"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -63,7 +63,7 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <table schema="manage-server" tableName="t_permission" domainObjectName="Permission"
+        <table schema="manage-server" tableName="t_s_permission" domainObjectName="Permission"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

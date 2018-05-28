@@ -18,7 +18,7 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_user
+    from t_s_user
     where id = #{id,jdbcType=BIGINT}
   </select>
 
@@ -26,7 +26,7 @@
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_user
+    insert into t_s_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="createdTime != null" >
         created_time,
@@ -75,7 +75,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xrom.server.entity.User" >
-    update t_user
+    update t_s_user
     <set >
       <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
@@ -106,7 +106,7 @@
   <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
-    from t_user
+    from t_s_user
     where phone = #{phone,jdbcType=VARCHAR}
   </select>
 </mapper>

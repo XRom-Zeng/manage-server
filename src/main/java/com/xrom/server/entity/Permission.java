@@ -3,6 +3,7 @@ package com.xrom.server.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 实体：资源权限
@@ -35,4 +36,7 @@ public class Permission {
 
     /** 是否可用：0-不可用； 1-可用 */
     private Integer available;
+
+    /** 子列表*/
+    Set<Permission> permissionList;
 }

@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="/web/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/web/layui/css/layui.css"/>
     <link rel="stylesheet" href="/web/css/login.css" media="all"/>
 </head>
 <body class="main" style="background-position: -280.8px 0px;">
@@ -40,11 +40,10 @@
         <form class="layui-form">
             <ul>
                 <li>
-                    <input name="username" type="text" class="loginuser" placeholder="请输入用户名/手机号码" value="admin" lay-verify="required">
+                    <input name="username" type="text" id="username" class="loginuser" placeholder="请输入用户名/手机号码" lay-verify="required">
                 </li>
                 <li>
-                    <input name="password" type="password" id="password" value="123456"
-                           class="loginpwd ipt" placeholder="请输入密码" lay-verify="required">
+                    <input name="password" type="password" id="password" class="loginpwd ipt" placeholder="请输入密码" lay-verify="required">
                 </li>
                 <li>
                     <button class="layui-btn loginbtn" lay-submit lay-filter="login">登录</button>

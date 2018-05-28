@@ -10,6 +10,7 @@
     <result column="permission" property="permission" jdbcType="VARCHAR" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />
     <result column="available" property="available" jdbcType="INTEGER" />
+    <collection property="permissionList" column="id" select="selectByParentId" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, created_time, name, resource_type, url, permission, parent_id, available
@@ -18,7 +19,7 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_permission
+    from t_s_permission
     where id = #{id,jdbcType=BIGINT}
   </select>
 
@@ -26,7 +27,7 @@
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_permission
+    insert into t_s_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="createdTime != null" >
         created_time,
@@ -75,7 +76,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xrom.server.entity.Permission" >
-    update t_permission
+    update t_s_permission
     <set >
       <if test="createdTime != null" >
         created_name = #{createdTime,jdbcType=VARCHAR},
@@ -105,11 +106,17 @@
   <select id="selectByRoleId" resultMap="BaseResultMap" >
     select
       <include refid="Base_Column_List" />
-    from t_permission
-    where id in (
-      select permission_id
-      from t_role_permission
-      where role_id = #{roleId}
-    )
+    from t_s_permission as p
+    left join t_s_role_permission as rp
+    on p.id = rp.permission_id
+    where p.parent_id = 0
+    and rp.role_id = #{roleId}
+  </select>
+  
+  <select id="selectByParentId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_s_permission
+    where parent_id = #{parentId}
   </select>
 </mapper>

@@ -15,7 +15,7 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_role
+    from t_s_role
     where id = #{id,jdbcType=BIGINT}
   </select>
 
@@ -23,7 +23,7 @@
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_role
+    insert into t_s_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="createdTime != null" >
         created_time,
@@ -54,7 +54,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xrom.server.entity.Role" >
-    update t_role
+    update t_s_role
     <set >
       <if test="createdTime != null" >
         created_name = #{createdTime,jdbcType=VARCHAR},
@@ -76,11 +76,11 @@
   <select id="selectByUserId"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from t_role
+    from t_s_role
     where id in (
       select
         role_id
-      from t_user_role
+      from t_s_user_role
       where user_id = #{userId}
     )
   </select>

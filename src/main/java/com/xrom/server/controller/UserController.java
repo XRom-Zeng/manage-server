@@ -1,5 +1,6 @@
 package com.xrom.server.controller;
 
+import com.xrom.server.entity.User;
 import com.xrom.server.response.WebResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -38,11 +39,18 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/login")
+    @ResponseBody
     public WebResponse login(String username, String password) {
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
         subject.login(token);
         return success();
+    }
+
+    @GetMapping("/index")
+    public String index() {
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        return "index";
     }
 
     /**

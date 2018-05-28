@@ -55,6 +55,7 @@ layui.config({
     $(function () {
         //得到焦点
         $("#password").focus(function () {
+            $("#password").attr('placeholder','');
             $("#left_hand").animate({
                 left: "150",
                 top: " -38"
@@ -78,10 +79,18 @@ layui.config({
         });
         //失去焦点
         $("#password").blur(function () {
+            $(this).attr('placeholder','请输入密码');
             $("#left_hand").attr("class", "initial_left_hand");
             $("#left_hand").attr("style", "left:100px;top:-12px;");
             $("#right_hand").attr("class", "initial_right_hand");
             $("#right_hand").attr("style", "right:-112px;top:-12px");
+        });
+
+        $("#username").focus(function () {
+            $(this).attr('placeholder','');
+        });
+        $("#username").blur(function () {
+            $(this).attr('placeholder','请输入用户名/手机号码');
         });
 
         $('.loginbox').css({ 'position': 'absolute', 'left': ($(window).width() - 692) / 2 });
@@ -92,12 +101,13 @@ layui.config({
 
     //登录按钮事件
     form.on("submit(login)", function (data) {
-        $.getJSON("/admin/user/login"
+        $.post("/admin/user/login"
             , data.field
             ,function(data) {
+            console.log(data);
                 if (data.code === 200) {
                     layer.msg(data.msg);
-                    // window.location.href = "/Home/Index";
+                    window.location.href = "/admin/user/index";
                 } else {
                     layer.msg(data.msg);
                 }
